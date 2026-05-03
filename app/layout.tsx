@@ -17,6 +17,18 @@ const poppins = Poppins({
 const siteDescription =
   "Flavor-infused whole eggs — launching NYC tri-state this summer."
 
+/** Absolute URLs for Open Graph / iMessage previews. Set in production, e.g. `https://yoursite.com`. */
+function getMetadataBase(): URL {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return new URL(process.env.NEXT_PUBLIC_SITE_URL)
+  }
+  if (process.env.VERCEL_URL) {
+    const raw = process.env.VERCEL_URL
+    return new URL(raw.startsWith("http") ? raw : `https://${raw}`)
+  }
+  return new URL("http://localhost:3000")
+}
+
 export const viewport: Viewport = {
   viewportFit: "cover",
   themeColor: "#FFFCE9",
@@ -25,6 +37,7 @@ export const viewport: Viewport = {
 export async function generateMetadata(): Promise<Metadata> {
   const iconHref = publicFaviconUrl()
   return {
+    metadataBase: getMetadataBase(),
     title: "Mad Scramble",
     description: siteDescription,
     applicationName: "Mad Scramble",
@@ -38,11 +51,20 @@ export async function generateMetadata(): Promise<Metadata> {
       description: siteDescription,
       siteName: "Mad Scramble",
       type: "website",
+      images: [
+        {
+          url: "/new-logo.png",
+          width: 384,
+          height: 156,
+          alt: "Mad Scramble",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: "Mad Scramble",
       description: siteDescription,
+      images: ["/new-logo.png"],
     },
   }
 }
