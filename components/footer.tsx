@@ -1,23 +1,8 @@
 "use client"
 
 import React, { useState } from "react"
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { CheckCircle, X } from "lucide-react"
-
-const TikTokIcon = ({ size = 18 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-    <path
-      d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43V7.83a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.26z"
-      fill="#ff0050"
-    />
-    <path
-      d="M17.5 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 20.1a6.34 6.34 0 0 0 10.86-4.43V7.83a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.26z"
-      fill="#00f2ea"
-    />
-  </svg>
-)
-
 export default function Footer() {
   const [result, setResult] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -27,37 +12,34 @@ export default function Footer() {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setIsSubmitting(true)
-    setResult("Sending....")
-    
+    setResult("")
+
     const form = event.target as HTMLFormElement
     const formData = new FormData(form)
-    
     formData.append("access_key", process.env.NEXT_PUBLIC_WEB3_KEY!)
+
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData
-      }).then((res) => res.json())
+        body: formData,
+      }).then((r) => r.json())
 
       if (res.success) {
-        console.log("Success", res)
         setResult("Message sent successfully!")
         setIsSuccess(true)
         setShowModal(true)
-        form.reset() // Clear the form
+        form.reset()
       } else {
-        console.log("Error", res)
         setResult("Failed to send message. Please try again.")
         setIsSuccess(false)
         setShowModal(true)
       }
-    } catch (error) {
-      console.log("Network error", error)
+    } catch {
       setResult("Network error. Please try again.")
       setIsSuccess(false)
       setShowModal(true)
     }
-    
+
     setIsSubmitting(false)
   }
 
@@ -67,126 +49,126 @@ export default function Footer() {
   }
 
   const socialLinks = [
-    { name: "Instagram", href: "https://instagram.com/eatcrackdup" },
-    { name: "TikTok", href: "https://tiktok.com/@eatcrackdup" },
+    { name: "Instagram", href: "https://instagram.com/eatmadscramble" },
+    { name: "TikTok", href: "https://tiktok.com/@eatmadscramble" },
   ]
 
+  const fieldBase =
+    "w-full px-6 py-4 border-2 border-[#341514] bg-[#FFFCE9] font-poppins font-normal text-lg text-[#341514] placeholder:text-[#341514] placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-[#FFE135]/80"
+
+  const inputClass = `${fieldBase} rounded-full`
+
+  const textareaClass = `${fieldBase} rounded-2xl resize-none min-h-[160px]`
+
   return (
-    <footer id="contact" className="px-8 py-16 bg-[#FFE196] border-t-2 border-[#341514] scroll-mt-32 md:scroll-mt-12">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-start gap-16">
-          {/* Left side - Logo and Social */}
-          <div className="lg:w-1/3">
-          <Image src="/logo-brown-final.svg" alt="Crack'd Up Logo" width={300} height={100} className="py-6"/>
-            <div className="flex space-x-4">
+    <footer id="contact" className="scroll-mt-24 px-3 sm:px-6 lg:px-8 py-16 sm:py-20 bg-[#FFFCE9]">
+      <div className="mx-auto w-full">
+        <div className="flex flex-col lg:flex-row items-start gap-14 lg:gap-20">
+          <div className="flex w-full flex-col items-start lg:w-[38%]">
+            <Image
+              src="/smaller-logo.png"
+              alt="Mad Scramble"
+              width={260}
+              height={110}
+              className="h-auto w-full max-w-[220px] sm:max-w-[260px] mb-10"
+            />
+            <div className="flex w-full flex-wrap gap-5 lg:pr-12">
               <a
                 href={socialLinks[0].href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-xl flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
+                className="relative block h-[4.75rem] w-[4.75rem] overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105"
+                aria-label="Instagram"
               >
-                <Image src="/instagram.svg" alt="Instagram" width={48} height={48} className="w-12 h-12" />
+                <Image
+                  src="/instagram.png"
+                  alt=""
+                  fill
+                  sizes="76px"
+                  className="object-contain pointer-events-none select-none"
+                />
               </a>
               <a
                 href={socialLinks[1].href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-black rounded-xl flex items-center justify-center cursor-pointer hover:scale-105 transition-transform relative overflow-hidden"
+                className="relative block h-[4.75rem] w-[4.75rem] overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105"
+                aria-label="TikTok"
               >
-                <TikTokIcon size={24} />
+                <Image
+                  src="/tiktok.png"
+                  alt=""
+                  fill
+                  sizes="76px"
+                  className="object-contain pointer-events-none select-none"
+                />
               </a>
             </div>
           </div>
 
-          {/* Right side - Contact Form */}
-          <div className="lg:w-2/3">
-            <h3 className="text-3xl font-bold text-[#341514] mb-8">Talk to the Founders!</h3>
-            <form onSubmit={onSubmit} className="space-y-6">
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                required
-                className="w-full px-6 py-4 rounded-full border-2 border-[#341514] bg-transparent text-[#341514] placeholder-[#341514] text-lg focus:outline-none focus:ring-2 focus:ring-[#f2b41c]"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-                className="w-full px-6 py-4 rounded-full border-2 border-[#341514] bg-transparent text-[#341514] placeholder-[#341514] text-lg focus:outline-none focus:ring-2 focus:ring-[#f2b41c]"
-              />
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                required
-                className="w-full px-6 py-4 rounded-full border-2 border-[#341514] bg-transparent text-[#341514] placeholder-[#341514] text-lg focus:outline-none focus:ring-2 focus:ring-[#f2b41c]"
-              />
+          <div className="w-full lg:flex-1 lg:pl-10 xl:pl-14">
+            <h3 className="font-poppins text-2xl sm:text-3xl font-bold text-[#4C1610] mb-8 uppercase tracking-tight">
+              Talk to the founders!
+            </h3>
+            <form onSubmit={onSubmit} className="space-y-5 max-w-2xl">
+              <input type="text" name="name" placeholder="Name" required className={inputClass} />
+              <input type="email" name="email" placeholder="Email" required className={inputClass} />
+              <input type="text" name="subject" placeholder="Subject" required className={inputClass} />
               <textarea
                 name="message"
                 placeholder="Message"
                 rows={6}
                 required
-                className="w-full px-6 py-4 rounded-3xl border-2 border-[#341514] bg-transparent text-[#341514] placeholder-[#341514] text-lg focus:outline-none focus:ring-2 focus:ring-[#f2b41c] resize-none"
-              ></textarea>
-              <Button 
+                className={textareaClass}
+              />
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-[#341514] hover:bg-[#2a1010] text-white font-bold px-12 py-4 rounded-full text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                className="rounded-full bg-[#FFE135] px-12 py-4 font-poppins text-lg font-normal text-[#341514] shadow-md hover:bg-[#f5d820] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                {isSubmitting ? (
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Sending...</span>
-                  </div>
-                ) : (
-                  "Send"
-                )}
-              </Button>
+                {isSubmitting ? "Sending…" : "SEND"}
+              </button>
             </form>
           </div>
         </div>
       </div>
 
-      {/* Success/Error Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative animate-in fade-in duration-200">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+          <div className="bg-[#FFFCE9] rounded-2xl p-8 max-w-md w-full mx-4 relative border-2 border-[#341514]/10">
             <button
+              type="button"
               onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-4 right-4 text-[#341514]/60 hover:text-[#341514]"
+              aria-label="Close"
             >
               <X size={24} />
             </button>
-            
-            <div className="text-center">
+
+            <div className="text-center pt-2">
               {isSuccess ? (
                 <div className="mb-4">
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-[#341514] mb-2">Message Sent!</h3>
-                  <p className="text-[#341514]">
-                    Thanks for reaching out! We&apos;ll get back to you soon.
-                  </p>
+                  <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+                  <h3 className="font-gabarito text-2xl font-bold text-[#341514] mb-2">Message sent!</h3>
+                  <p className="font-inika text-[#341514]/90">Thanks for reaching out. We&apos;ll get back to you soon.</p>
                 </div>
               ) : (
                 <div className="mb-4">
                   <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <X className="w-8 h-8 text-red-500" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#341514] mb-2">Oops!</h3>
-                  <p className="text-[#341514]">
-                    {result || "Something went wrong. Please try again."}
-                  </p>
+                  <h3 className="font-gabarito text-2xl font-bold text-[#341514] mb-2">Oops</h3>
+                  <p className="font-inika text-[#341514]/90">{result || "Something went wrong. Please try again."}</p>
                 </div>
               )}
-              
-              <Button
+
+              <button
+                type="button"
                 onClick={closeModal}
-                className="bg-[#f2b41c] hover:bg-[#e6a617] text-white font-bold px-8 py-3 rounded-full"
+                className="mt-6 rounded-full bg-[#FFE135] px-8 py-3 font-gabarito font-bold text-[#341514] hover:bg-[#f5d820]"
               >
-                {isSuccess ? "Awesome!" : "Try Again"}
-              </Button>
+                {isSuccess ? "Awesome" : "Try again"}
+              </button>
             </div>
           </div>
         </div>

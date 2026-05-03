@@ -2,23 +2,19 @@
 
 import Header from "./components/header"
 import HeroSection from "./components/hero-section"
-import WhatIsSection from "./components/what-is-section"
-import FlavorsSection from "./components/flavors-section"
-import HowToEatSection from "./components/how-to-eat-section"
-import AboutSection from "./components/about-section"
 import Footer from "./components/footer"
 
 export default function App() {
   return (
     <div className="min-h-screen font-inika">
-      <Header />
-      <HeroSection />
-      <WhatIsSection />
-      <FlavorsSection />
-      {/* Gradient transition between flavors and how-to-eat */}
-      <div className="h-16 bg-gradient-to-b from-[#FFF7D5] to-[#FFE196]"></div>
-      <HowToEatSection />
-      <AboutSection />
+      <div className="bg-[#E4F5FD]">
+        <Header />
+        <HeroSection />
+      </div>
+      <div
+        className="h-16 sm:h-20 md:h-24 w-full shrink-0 bg-gradient-to-b from-[#E4F5FD] via-[#F2F8F0] to-[#FFFCE9]"
+        aria-hidden
+      />
       <Footer />
     </div>
   )

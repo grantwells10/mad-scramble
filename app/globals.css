@@ -16,7 +16,7 @@ html {
 
 /* Ensure content doesn't jump behind fixed header when scrolling */
 :target {
-  scroll-margin-top: 120px; /* Header height + some extra spacing */
+  scroll-margin-top: 100px;
 }
 
 @layer utilities {
@@ -109,16 +109,16 @@ html {
   }
   
   html {
-    background: #FFF7D5;
+    background: #FFFCE9;
     background-attachment: fixed;
     min-height: 100vh;
     width: 100%;
     overflow-x: hidden;
     overscroll-behavior: none;
   }
-  
+
   body {
-    background: #FFF7D5;
+    background: #FFFCE9;
     font-family: "Inika", serif;
     min-height: 100vh;
     width: 100%;
@@ -126,21 +126,19 @@ html {
     padding: 0;
     @apply text-foreground;
   }
-  
-  /* Force background on all over-scroll areas */
+
   :root {
-    background: #FFF7D5;
+    background: #FFFCE9;
   }
-  
-  /* Create extended background for bottom over-scroll */
+
   body::after {
-    content: '';
+    content: "";
     position: fixed;
     top: 100vh;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #FFF7D5;
+    background: #FFFCE9;
     z-index: -1;
     pointer-events: none;
   }

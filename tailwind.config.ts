@@ -21,6 +21,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         inika: ["Inika", "serif"],
+        poppins: ["var(--font-poppins)", "Poppins", "sans-serif"],
         gabarito: ["Gabarito", "sans-serif"],
         patrick: ["Patrick Hand", "cursive"],
         cubano: ["Cubano", "sans-serif"],

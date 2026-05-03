@@ -1,44 +1,111 @@
-import { Button } from "@/components/ui/button"
+"use client"
+
 import Image from "next/image"
-import Link from "next/link"
+import { useState } from "react"
 
 export default function HeroSection() {
-  return (
-    <section className="px-8 pt-12 pb-32 bg-[#FFE196] min-h-[calc(80vh-88px)]">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
-        <div className="lg:w-3/5 mb-12 lg:mb-0 lg:pr-2 lg:-mr-16">
-          <div className="mb-8">
-            <h1 className="font-gabarito text-4xl lg:text-7xl font-black text-[#341514] leading-tight">
-              EGGS FINALLY GOT<br />
-              THEIR <span className="cursor-pointer inline-block bg-gradient-to-r from-[#341514] to-[#341514] bg-clip-text text-transparent md:hover:from-[#f2b41c] md:hover:via-[#ffd700] md:hover:to-[#ff6b35] md:hover:bg-[length:200%_100%] md:transition-all md:duration-500 md:hover:[animation:shimmer_1s_ease-in-out_infinite]" style={{ backgroundPosition: '0% 50%' }}>FLAVOR</span>
-            </h1>
-          </div>
-          <div className="text-left">
-            <h2 className="font-gabarito text-3xl lg:text-4xl text-[#f2b41c] font-bold mb-8">Break Your Breakfast Dilemma</h2>
-            
-            {/* Button and "Your first order" layout */}
-            <div className="flex flex-col lg:flex-row items-center lg:space-x-6">
-              <Link href="https://docs.google.com/forms/d/e/1FAIpQLScMaWzO7vhZP0LOXSN2OaopSaE4nHFOfuajGIS80Irz19sefQ/viewform" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#f2b41c] hover:bg-[#e6a617] text-white font-bold px-16 py-6 rounded-full text-2xl shadow-xl md:transform md:hover:scale-105 md:transition-all md:duration-200 mb-4 lg:mb-0">
-                  Try Now!
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
+  const [result, setResult] = useState("")
+  const [submitting, setSubmitting] = useState(false)
 
-        <div className="lg:w-2/5 flex justify-center lg:justify-center lg:-ml-8">
-          <div className="relative scale-105 lg:scale-110">
-            <div className="relative">
-              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-amber-400/20 to-yellow-400/20 rounded-full blur-3xl scale-150"></div>
-              <Image
-                src="/product-main-transparent.png"
-                alt="Crack'd Up Buttermilk Whole Eggs"
-                width={450}
-                height={580}
-                className="md:transform md:rotate-[8deg] md:hover:rotate-[4deg] md:transition-transform md:duration-300 relative z-10 hero-image"
+  const onWaitlistSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setSubmitting(true)
+    setResult("")
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const key = process.env.NEXT_PUBLIC_WEB3_KEY
+    if (!key) {
+      setResult("Waitlist is not configured yet.")
+      setSubmitting(false)
+      return
+    }
+    formData.append("access_key", key)
+    formData.append("subject", "Mad Scramble — Waitlist signup")
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      }).then((r) => r.json())
+      if (res.success) {
+        setResult("Thanks — you’re on the list!")
+        form.reset()
+      } else {
+        setResult("Something went wrong. Try again.")
+      }
+    } catch {
+      setResult("Network error. Try again.")
+    }
+    setSubmitting(false)
+  }
+
+  return (
+    <section className="relative bg-[#E4F5FD] pb-16 sm:pb-24">
+      <div className="mx-auto w-full px-3 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-11 lg:gap-8 pt-1 lg:pt-3">
+          <div className="lg:max-w-xl xl:max-w-2xl order-2 lg:order-1">
+            <p className="font-poppins text-sm sm:text-base font-bold uppercase tracking-wide text-[#FDCD32] drop-shadow-sm mb-4">
+              Launching in NYC tri-state area this summer
+            </p>
+            <h1 className="font-poppins text-4xl sm:text-5xl xl:text-6xl font-black text-[#4B1813] leading-[1.05] mb-8">
+              EGGS FINALLY GOT
+              <br />
+              THEIR FLAVOR
+            </h1>
+            <p className="font-poppins text-xl sm:text-2xl font-bold uppercase text-[#FDCD32] mb-4">
+              JOIN THE WAITLIST!
+            </p>
+            <form onSubmit={onWaitlistSubmit} className="max-w-lg">
+              <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="EMAIL"
+                disabled={submitting}
+                className="w-full min-h-[56px] rounded-full border-0 bg-[#B7D2E0] px-8 font-gabarito text-base font-bold text-white placeholder:text-white placeholder:font-bold placeholder:tracking-widest focus:outline-none focus:ring-2 focus:ring-[#341514]/25 disabled:opacity-70"
               />
-            </div>
+            </form>
+            {result ? <p className="mt-3 font-inika text-sm text-[#341514]/90">{result}</p> : null}
+          </div>
+
+          <div className="order-1 lg:order-2 flex min-w-0 translate-x-2 justify-center sm:translate-x-3 lg:translate-x-5 lg:justify-end lg:flex-1 pt-2 sm:pt-3">
+            <figure
+              className="relative isolate mx-auto w-[min(92vw,280px)] h-[280px] sm:w-[min(88vw,320px)] sm:h-[310px] md:w-[340px] md:h-[330px] lg:w-[400px] lg:h-[350px]"
+              aria-label="Mad Scramble cartons: French Toast, Pancake, and Garlic Parm"
+            >
+              {/* Back row — French Toast (left) & Garlic Parm (right), tilted outward from center */}
+              <div className="absolute bottom-0 left-[-6%] z-10 w-[50%] max-w-[184px] origin-bottom rotate-[-10deg] drop-shadow-lg translate-y-1 sm:translate-y-2">
+                <Image
+                  src="/french-toast.png"
+                  alt=""
+                  width={400}
+                  height={520}
+                  className="w-full h-auto object-contain object-bottom pointer-events-none select-none"
+                  priority
+                />
+              </div>
+              <div className="absolute bottom-0 right-[-6%] z-10 w-[50%] max-w-[184px] origin-bottom rotate-[10deg] drop-shadow-lg translate-y-1 sm:translate-y-2">
+                <Image
+                  src="/garlic-parm.png"
+                  alt=""
+                  width={400}
+                  height={520}
+                  className="w-full h-auto object-contain object-bottom pointer-events-none select-none"
+                  priority
+                />
+              </div>
+              {/* Front — Pancake on top of both side cartons */}
+              <div className="absolute left-1/2 bottom-0 z-30 w-[53%] max-w-[198px] -translate-x-1/2 origin-bottom -translate-y-1 sm:-translate-y-2 drop-shadow-2xl">
+                <Image
+                  src="/pancake.png"
+                  alt=""
+                  width={400}
+                  height={520}
+                  className="w-full h-auto object-contain object-bottom pointer-events-none select-none"
+                  priority
+                />
+              </div>
+            </figure>
           </div>
         </div>
       </div>
