@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { publicFaviconUrl } from "@/lib/favicon-url"
@@ -16,6 +16,11 @@ const poppins = Poppins({
 
 const siteDescription =
   "Flavor-infused whole eggs — launching NYC tri-state this summer."
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+  themeColor: "#FFFCE9",
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   const iconHref = publicFaviconUrl()

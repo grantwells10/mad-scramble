@@ -6,15 +6,11 @@ import Footer from "./components/footer"
 
 export default function App() {
   return (
-    <div className="min-h-screen font-inika">
-      <div className="bg-[#E4F5FD]">
+    <div className="flex min-h-dvh flex-col font-inika">
+      <div className="shrink-0 bg-transparent">
         <Header />
         <HeroSection />
       </div>
-      <div
-        className="h-16 sm:h-20 md:h-24 w-full shrink-0 bg-gradient-to-b from-[#E4F5FD] via-[#F2F8F0] to-[#FFFCE9]"
-        aria-hidden
-      />
       <Footer />
     </div>
   )

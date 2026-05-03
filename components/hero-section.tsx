@@ -39,22 +39,23 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative bg-[#E4F5FD] pb-16 sm:pb-24">
+    <section className="relative bg-transparent pb-16 sm:pb-24">
       <div className="mx-auto w-full px-3 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-11 lg:gap-8 pt-1 lg:pt-3">
-          <div className="lg:max-w-xl xl:max-w-2xl order-2 lg:order-1">
-            <p className="font-poppins text-sm sm:text-base font-bold uppercase tracking-wide text-[#FDCD32] drop-shadow-sm mb-4">
-              Launching in NYC tri-state area this summer
+          <div className="flex flex-col lg:max-w-xl xl:max-w-2xl order-2 lg:order-1">
+            <p className="order-1 hidden lg:block font-poppins text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#FDCD32] drop-shadow-sm mb-4 leading-tight">
+              <span className="block tracking-tight">LAUNCHING IN NYC TRI STATE</span>
+              <span className="block">AREA THIS SUMMER</span>
             </p>
-            <h1 className="font-poppins text-4xl sm:text-5xl xl:text-6xl font-black text-[#4B1813] leading-[1.05] mb-8">
+            <h1 className="order-2 hidden lg:block font-poppins text-4xl sm:text-5xl xl:text-6xl font-black text-[#4B1813] leading-[1.05] mb-8">
               EGGS FINALLY GOT
               <br />
               THEIR FLAVOR
             </h1>
-            <p className="font-poppins text-xl sm:text-2xl font-bold uppercase text-[#FDCD32] mb-4">
+            <p className="order-1 lg:order-3 font-poppins text-3xl sm:text-4xl lg:text-xl xl:text-2xl font-bold uppercase text-[#FDCD32] mb-4 text-center lg:text-left leading-tight">
               JOIN THE WAITLIST!
             </p>
-            <form onSubmit={onWaitlistSubmit} className="max-w-lg">
+            <form onSubmit={onWaitlistSubmit} className="order-2 lg:order-4 max-w-lg w-full mx-auto lg:mx-0">
               <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
               <input
                 type="email"
@@ -65,10 +66,16 @@ export default function HeroSection() {
                 className="w-full min-h-[56px] rounded-full border-0 bg-[#B7D2E0] px-8 font-gabarito text-base font-bold text-white placeholder:text-white placeholder:font-bold placeholder:tracking-widest focus:outline-none focus:ring-2 focus:ring-[#341514]/25 disabled:opacity-70"
               />
             </form>
-            {result ? <p className="mt-3 font-inika text-sm text-[#341514]/90">{result}</p> : null}
+            <p className="order-3 lg:hidden mt-3 font-poppins text-lg sm:text-2xl font-bold uppercase tracking-wide text-[#FDCD32]/95 drop-shadow-sm text-center leading-tight">
+              <span className="block tracking-tight">LAUNCHING IN NYC TRI STATE</span>
+              <span className="block">AREA THIS SUMMER</span>
+            </p>
+            {result ? (
+              <p className="order-4 lg:order-5 mt-3 font-inika text-sm text-[#341514]/90 text-center lg:text-left">{result}</p>
+            ) : null}
           </div>
 
-          <div className="order-1 lg:order-2 flex min-w-0 translate-x-2 justify-center sm:translate-x-3 lg:translate-x-5 lg:justify-end lg:flex-1 pt-2 sm:pt-3">
+          <div className="order-1 lg:order-2 flex min-w-0 translate-x-2 justify-center max-sm:translate-x-0 sm:translate-x-3 lg:translate-x-5 lg:justify-end lg:flex-1 pt-2 sm:pt-3">
             <figure
               className="relative isolate mx-auto w-[min(92vw,280px)] h-[280px] sm:w-[min(88vw,320px)] sm:h-[310px] md:w-[340px] md:h-[330px] lg:w-[400px] lg:h-[350px]"
               aria-label="Mad Scramble cartons: French Toast, Pancake, and Garlic Parm"

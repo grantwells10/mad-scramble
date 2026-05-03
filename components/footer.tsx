@@ -61,30 +61,34 @@ export default function Footer() {
   const textareaClass = `${fieldBase} rounded-2xl resize-none min-h-[160px]`
 
   return (
-    <footer id="contact" className="scroll-mt-24 px-3 sm:px-6 lg:px-8 py-16 sm:py-20 bg-[#FFFCE9]">
+    <footer
+      id="contact"
+      className="mt-auto flex flex-1 flex-col scroll-mt-24 bg-[#FFFCE9] px-3 pb-[max(4rem,calc(2.5rem+env(safe-area-inset-bottom,0px)))] pt-16 sm:px-6 sm:pb-[max(5rem,calc(3rem+env(safe-area-inset-bottom,0px)))] sm:pt-20 lg:px-8"
+    >
       <div className="mx-auto w-full">
         <div className="flex flex-col lg:flex-row items-start gap-14 lg:gap-20">
-          <div className="flex w-full flex-col items-start lg:w-[38%]">
+          <div className="flex w-full flex-row items-center justify-center gap-4 sm:flex-col sm:items-start sm:justify-start sm:gap-0 lg:w-[38%]">
             <Image
               src="/smaller-logo.png"
               alt="Mad Scramble"
               width={260}
               height={110}
-              className="h-auto w-full max-w-[220px] sm:max-w-[260px] mb-10"
+              sizes="(min-width: 1024px) 240px, (min-width: 768px) 132px, (min-width: 640px) 120px, 108px"
+              className="h-auto w-auto max-h-[3.75rem] max-w-[6.75rem] object-contain shrink-0 sm:mb-5 sm:max-h-[4.125rem] sm:max-w-[7.5rem] md:max-h-[4.5rem] md:max-w-[8.25rem] lg:max-h-none lg:w-[min(100%,240px)] lg:max-w-[240px]"
             />
-            <div className="flex w-full flex-wrap gap-5 lg:pr-12">
+            <div className="flex shrink-0 items-center justify-center gap-5 sm:gap-7 sm:w-full sm:flex-wrap sm:justify-start lg:pr-12">
               <a
                 href={socialLinks[0].href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative block h-[4.75rem] w-[4.75rem] overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105"
+                className="relative block h-12 w-12 overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105 sm:h-[4.75rem] sm:w-[4.75rem]"
                 aria-label="Instagram"
               >
                 <Image
                   src="/instagram.png"
                   alt=""
                   fill
-                  sizes="76px"
+                  sizes="(max-width: 639px) 48px, 76px"
                   className="object-contain pointer-events-none select-none"
                 />
               </a>
@@ -92,14 +96,14 @@ export default function Footer() {
                 href={socialLinks[1].href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative block h-[4.75rem] w-[4.75rem] overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105"
+                className="relative block h-12 w-12 overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105 sm:h-[4.75rem] sm:w-[4.75rem]"
                 aria-label="TikTok"
               >
                 <Image
                   src="/tiktok.png"
                   alt=""
                   fill
-                  sizes="76px"
+                  sizes="(max-width: 639px) 48px, 76px"
                   className="object-contain pointer-events-none select-none"
                 />
               </a>
@@ -121,13 +125,15 @@ export default function Footer() {
                 required
                 className={textareaClass}
               />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="rounded-full bg-[#FFE135] px-12 py-4 font-poppins text-lg font-normal text-[#341514] shadow-md hover:bg-[#f5d820] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                {isSubmitting ? "Sending…" : "SEND"}
-              </button>
+              <div className="flex justify-center pt-1">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="rounded-full bg-[#FFE135] px-12 py-4 font-poppins text-lg font-normal text-[#341514] shadow-md hover:bg-[#f5d820] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {isSubmitting ? "Sending…" : "SEND"}
+                </button>
+              </div>
             </form>
           </div>
         </div>

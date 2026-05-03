@@ -108,38 +108,49 @@ html {
     box-sizing: border-box;
   }
   
+  /* Light blue default; gradient fades to cream — covers safe areas & horizontal edges on mobile */
   html {
-    background: #FFFCE9;
-    background-attachment: fixed;
-    min-height: 100vh;
+    background-color: #e4f5fd;
+    min-height: 100%;
+    min-height: 100dvh;
     width: 100%;
-    overflow-x: hidden;
+    max-width: 100%;
     overscroll-behavior: none;
+    overscroll-behavior-x: none;
   }
 
   body {
-    background: #FFFCE9;
+    max-width: 100%;
+    background-color: #e4f5fd;
+    background-image: linear-gradient(
+      180deg,
+      #e4f5fd 0%,
+      #e4f5fd 28%,
+      #e8f6fb 44%,
+      #f0f4e8 68%,
+      #fffce9 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: scroll;
     font-family: "Inika", serif;
-    min-height: 100vh;
+    min-height: 100%;
+    min-height: 100dvh;
     width: 100%;
+    max-width: 100%;
     margin: 0;
     padding: 0;
     @apply text-foreground;
   }
 
   :root {
-    background: #FFFCE9;
+    background-color: #e4f5fd;
   }
 
-  body::after {
-    content: "";
-    position: fixed;
-    top: 100vh;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: #FFFCE9;
-    z-index: -1;
-    pointer-events: none;
+  /* Reduce sideways pan on phones only; leave desktop pointer/touch behavior unchanged */
+  @media (max-width: 767px) {
+    body {
+      touch-action: pan-y pinch-zoom;
+    }
   }
 }
