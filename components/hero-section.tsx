@@ -41,8 +41,8 @@ export default function HeroSection() {
   return (
     <section className="relative bg-transparent pb-16 sm:pb-24">
       <div className="mx-auto w-full px-3 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-11 lg:gap-8 pt-1 lg:pt-3">
-          <div className="flex flex-col lg:max-w-xl xl:max-w-2xl order-2 lg:order-1">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-9 lg:gap-2 pt-0 lg:pt-2">
+          <div className="flex flex-col lg:max-w-xl xl:max-w-2xl order-2 lg:order-1 lg:pl-10 xl:pl-14 2xl:pl-20">
             <p className="order-1 hidden lg:block font-poppins text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#FDCD32] drop-shadow-sm mb-4 leading-tight">
               <span className="block tracking-tight">LAUNCHING IN NYC TRI STATE</span>
               <span className="block">AREA THIS SUMMER</span>
@@ -75,7 +75,7 @@ export default function HeroSection() {
             ) : null}
           </div>
 
-          <div className="order-1 lg:order-2 flex min-w-0 translate-x-2 justify-center max-sm:translate-x-0 sm:translate-x-3 lg:translate-x-5 lg:justify-end lg:flex-1 pt-2 sm:pt-3">
+          <div className="order-1 lg:order-2 flex min-w-0 translate-x-0 justify-center sm:translate-x-1 lg:-translate-x-5 lg:justify-end lg:flex-1 pt-1 sm:pt-2">
             <figure
               className="relative isolate mx-auto w-[min(92vw,280px)] h-[280px] sm:w-[min(88vw,320px)] sm:h-[310px] md:w-[340px] md:h-[330px] lg:w-[400px] lg:h-[350px]"
               aria-label="Mad Scramble cartons: French Toast, Pancake, and Garlic Parm"

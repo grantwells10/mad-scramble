@@ -67,7 +67,7 @@ export default function Footer() {
     >
       <div className="mx-auto w-full">
         <div className="flex flex-col lg:flex-row items-start gap-14 lg:gap-20">
-          <div className="flex w-full flex-row items-center justify-center gap-4 sm:flex-col sm:items-start sm:justify-start sm:gap-0 lg:w-[38%]">
+          <div className="flex w-full flex-row items-center justify-center gap-4 sm:flex-col sm:items-start sm:justify-start sm:gap-0 lg:w-[38%] lg:pl-10 xl:pl-14 2xl:pl-20">
             <Image
               src="/smaller-logo.png"
               alt="Mad Scramble"
@@ -76,7 +76,7 @@ export default function Footer() {
               sizes="(min-width: 1024px) 240px, (min-width: 768px) 132px, (min-width: 640px) 120px, 108px"
               className="h-auto w-auto max-h-[3.75rem] max-w-[6.75rem] object-contain shrink-0 sm:mb-5 sm:max-h-[4.125rem] sm:max-w-[7.5rem] md:max-h-[4.5rem] md:max-w-[8.25rem] lg:max-h-none lg:w-[min(100%,240px)] lg:max-w-[240px]"
             />
-            <div className="flex shrink-0 items-center justify-center gap-5 sm:gap-7 sm:w-full sm:flex-wrap sm:justify-start lg:pr-12">
+            <div className="flex shrink-0 items-center justify-center gap-5 sm:gap-7 sm:w-full sm:flex-wrap sm:justify-start">
               <a
                 href={socialLinks[0].href}
                 target="_blank"
