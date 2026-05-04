@@ -31,7 +31,7 @@ function getMetadataBase(): URL {
 
 export const viewport: Viewport = {
   viewportFit: "cover",
-  themeColor: "#FFFCE9",
+  themeColor: "#A4E4FF",
 }
 
 export async function generateMetadata(): Promise<Metadata> {

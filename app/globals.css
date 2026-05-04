@@ -108,9 +108,9 @@ html {
     box-sizing: border-box;
   }
   
-  /* Light blue default; gradient fades to cream — covers safe areas & horizontal edges on mobile */
+  /* Matches header — status bar / overscroll on iPhone; hero & footer set their own fills */
   html {
-    background-color: #e4f5fd;
+    background-color: #a4e4ff;
     min-height: 100%;
     min-height: 100dvh;
     width: 100%;
@@ -121,18 +121,7 @@ html {
 
   body {
     max-width: 100%;
-    background-color: #e4f5fd;
-    background-image: linear-gradient(
-      180deg,
-      #e4f5fd 0%,
-      #e4f5fd 28%,
-      #e8f6fb 44%,
-      #f0f4e8 68%,
-      #fffce9 100%
-    );
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-attachment: scroll;
+    background-color: #a4e4ff;
     font-family: "Inika", serif;
     min-height: 100%;
     min-height: 100dvh;
@@ -144,7 +133,7 @@ html {
   }
 
   :root {
-    background-color: #e4f5fd;
+    background-color: #a4e4ff;
   }
 
   /* Reduce sideways pan on phones only; leave desktop pointer/touch behavior unchanged */

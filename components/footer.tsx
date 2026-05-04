@@ -63,50 +63,55 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="mt-auto flex flex-1 flex-col scroll-mt-24 bg-[#FFFCE9] px-3 pb-[max(4rem,calc(2.5rem+env(safe-area-inset-bottom,0px)))] pt-16 sm:px-6 sm:pb-[max(5rem,calc(3rem+env(safe-area-inset-bottom,0px)))] sm:pt-20 lg:px-8"
+      className="mt-auto flex flex-1 flex-col scroll-mt-24 bg-[#FFEFC8] px-3 pb-[max(4rem,calc(2.5rem+env(safe-area-inset-bottom,0px)))] pt-16 sm:px-6 sm:pb-[max(5rem,calc(3rem+env(safe-area-inset-bottom,0px)))] sm:pt-20 lg:px-8"
     >
       <div className="mx-auto w-full">
         <div className="flex flex-col lg:flex-row items-start gap-14 lg:gap-20">
-          <div className="flex w-full flex-row items-center justify-center gap-4 sm:flex-col sm:items-start sm:justify-start sm:gap-0 lg:w-[38%] lg:pl-10 xl:pl-14 2xl:pl-20">
-            <Image
-              src="/smaller-logo.png"
-              alt="Mad Scramble"
-              width={260}
-              height={110}
-              sizes="(min-width: 1024px) 240px, (min-width: 768px) 132px, (min-width: 640px) 120px, 108px"
-              className="h-auto w-auto max-h-[3.75rem] max-w-[6.75rem] object-contain shrink-0 sm:mb-5 sm:max-h-[4.125rem] sm:max-w-[7.5rem] md:max-h-[4.5rem] md:max-w-[8.25rem] lg:max-h-none lg:w-[min(100%,240px)] lg:max-w-[240px]"
-            />
-            <div className="flex shrink-0 items-center justify-center gap-5 sm:gap-7 sm:w-full sm:flex-wrap sm:justify-start">
-              <a
-                href={socialLinks[0].href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative block h-12 w-12 overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105 sm:h-[4.75rem] sm:w-[4.75rem]"
-                aria-label="Instagram"
-              >
+          <div className="flex w-full justify-center sm:justify-start lg:w-[38%] lg:pl-4 xl:pl-6 2xl:pl-8">
+            <div className="flex w-full max-w-full flex-row items-center justify-center gap-4 sm:w-fit sm:flex-col sm:items-stretch sm:justify-start sm:gap-0">
+              <div className="shrink-0 leading-none">
                 <Image
-                  src="/instagram.png"
-                  alt=""
-                  fill
-                  sizes="(max-width: 639px) 48px, 76px"
-                  className="object-contain pointer-events-none select-none"
+                  src="/smaller-logo.png"
+                  alt="Mad Scramble"
+                  width={260}
+                  height={110}
+                  sizes="(min-width: 1024px) 240px, (min-width: 768px) 132px, (min-width: 640px) 120px, 132px"
+                  className="block h-auto w-auto max-h-[4.5rem] max-w-[8.25rem] object-contain sm:max-h-[4.125rem] sm:max-w-[7.5rem] md:max-h-[4.5rem] md:max-w-[8.25rem] lg:max-h-none lg:w-[min(100%,240px)] lg:max-w-[240px]"
                 />
-              </a>
-              <a
-                href={socialLinks[1].href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative block h-12 w-12 overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105 sm:h-[4.75rem] sm:w-[4.75rem]"
-                aria-label="TikTok"
-              >
-                <Image
-                  src="/tiktok.png"
-                  alt=""
-                  fill
-                  sizes="(max-width: 639px) 48px, 76px"
-                  className="object-contain pointer-events-none select-none"
-                />
-              </a>
+              </div>
+              {/* Mobile: same row as logo. sm+: under logo; % inset matches logo sidebearing */}
+              <div className="flex shrink-0 items-center justify-start gap-3 pl-0 sm:gap-4 sm:pl-[11%] md:pl-[10%] lg:-mt-3 lg:pl-[9%] xl:-mt-4">
+                <a
+                  href={socialLinks[0].href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative block h-12 w-12 overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105 sm:h-[2.375rem] sm:w-[2.375rem]"
+                  aria-label="Instagram"
+                >
+                  <Image
+                    src="/instagram.png"
+                    alt=""
+                    fill
+                    sizes="(max-width: 639px) 48px, 38px"
+                    className="object-contain pointer-events-none select-none"
+                  />
+                </a>
+                <a
+                  href={socialLinks[1].href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative block h-12 w-12 overflow-hidden rounded-[22%] transition-opacity hover:opacity-90 hover:scale-105 sm:h-[2.375rem] sm:w-[2.375rem]"
+                  aria-label="TikTok"
+                >
+                  <Image
+                    src="/tiktok.png"
+                    alt=""
+                    fill
+                    sizes="(max-width: 639px) 48px, 38px"
+                    className="object-contain pointer-events-none select-none"
+                  />
+                </a>
+              </div>
             </div>
           </div>
 

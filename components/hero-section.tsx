@@ -39,20 +39,20 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative bg-transparent pb-16 sm:pb-24">
+    <section className="relative bg-[#FFFCEA] pb-16 sm:pb-24">
       <div className="mx-auto w-full px-3 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-9 lg:gap-2 pt-0 lg:pt-2">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-9 lg:gap-2 pt-6 sm:pt-8 lg:pt-10">
           <div className="flex flex-col lg:max-w-xl xl:max-w-2xl order-2 lg:order-1 lg:pl-10 xl:pl-14 2xl:pl-20">
-            <p className="order-1 hidden lg:block font-poppins text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#FDCD32] drop-shadow-sm mb-4 leading-tight">
+            <p className="order-1 hidden lg:block font-poppins text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#30C2DB] drop-shadow-sm mb-4 leading-tight">
               <span className="block tracking-tight">LAUNCHING IN NYC TRI STATE</span>
               <span className="block">AREA THIS SUMMER</span>
             </p>
-            <h1 className="order-2 hidden lg:block font-poppins text-4xl sm:text-5xl xl:text-6xl font-black text-[#4B1813] leading-[1.05] mb-8">
+            <h1 className="order-2 hidden lg:block font-poppins text-4xl sm:text-5xl xl:text-6xl font-black text-[#3F3891] leading-[1.05] mb-8">
               EGGS FINALLY GOT
               <br />
               THEIR FLAVOR
             </h1>
-            <p className="order-1 lg:order-3 font-poppins text-3xl sm:text-4xl lg:text-xl xl:text-2xl font-bold uppercase text-[#FDCD32] mb-4 text-center lg:text-left leading-tight">
+            <p className="order-1 lg:order-3 font-poppins text-3xl sm:text-4xl lg:text-xl xl:text-2xl font-bold uppercase text-[#30C2DB] mb-4 text-center lg:text-left leading-tight">
               JOIN THE WAITLIST!
             </p>
             <form onSubmit={onWaitlistSubmit} className="order-2 lg:order-4 max-w-lg w-full mx-auto lg:mx-0">
@@ -63,10 +63,10 @@ export default function HeroSection() {
                 required
                 placeholder="EMAIL"
                 disabled={submitting}
-                className="w-full min-h-[56px] rounded-full border-0 bg-[#B7D2E0] px-8 font-gabarito text-base font-bold text-white placeholder:text-white placeholder:font-bold placeholder:tracking-widest focus:outline-none focus:ring-2 focus:ring-[#341514]/25 disabled:opacity-70"
+                className="w-full min-h-[56px] rounded-full border-2 border-[#30C2DB] bg-white/90 px-8 font-gabarito text-base font-bold text-[#30C2DB] placeholder:text-[#30C2DB] placeholder:font-bold placeholder:tracking-widest focus:outline-none focus:ring-2 focus:ring-[#30C2DB]/30 disabled:opacity-70"
               />
             </form>
-            <p className="order-3 lg:hidden mt-3 font-poppins text-lg sm:text-2xl font-bold uppercase tracking-wide text-[#FDCD32]/95 drop-shadow-sm text-center leading-tight">
+            <p className="order-3 lg:hidden mt-3 font-poppins text-lg sm:text-2xl font-bold uppercase tracking-wide text-[#30C2DB] drop-shadow-sm text-center leading-tight">
               <span className="block tracking-tight">LAUNCHING IN NYC TRI STATE</span>
               <span className="block">AREA THIS SUMMER</span>
             </p>
@@ -75,7 +75,7 @@ export default function HeroSection() {
             ) : null}
           </div>
 
-          <div className="order-1 lg:order-2 flex min-w-0 translate-x-0 justify-center sm:translate-x-1 lg:-translate-x-5 lg:justify-end lg:flex-1 pt-1 sm:pt-2">
+          <div className="order-1 lg:order-2 flex min-w-0 translate-x-0 justify-center sm:translate-x-1 lg:-translate-x-5 lg:justify-end lg:flex-1 pt-2 sm:pt-4 lg:pt-0">
             <figure
               className="relative isolate mx-auto w-[min(92vw,280px)] h-[280px] sm:w-[min(88vw,320px)] sm:h-[310px] md:w-[340px] md:h-[330px] lg:w-[400px] lg:h-[350px]"
               aria-label="Mad Scramble cartons: French Toast, Pancake, and Garlic Parm"
