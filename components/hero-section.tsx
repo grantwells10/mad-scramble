@@ -57,14 +57,23 @@ export default function HeroSection() {
             </p>
             <form onSubmit={onWaitlistSubmit} className="order-2 lg:order-4 max-w-lg w-full mx-auto lg:mx-0">
               <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="EMAIL"
-                disabled={submitting}
-                className="w-full min-h-[56px] rounded-full border-2 border-[#30C2DB] bg-white/90 px-8 font-gabarito text-base font-bold text-[#30C2DB] placeholder:text-[#30C2DB] placeholder:font-bold placeholder:tracking-widest focus:outline-none focus:ring-2 focus:ring-[#30C2DB]/30 disabled:opacity-70"
-              />
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-stretch lg:gap-3">
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="EMAIL"
+                  disabled={submitting}
+                  className="w-full min-h-[56px] flex-1 rounded-full border-2 border-[#30C2DB] bg-white/90 px-8 font-gabarito text-base font-bold text-[#30C2DB] placeholder:text-[#30C2DB] placeholder:font-bold placeholder:tracking-widest focus:outline-none focus:ring-2 focus:ring-[#30C2DB]/30 disabled:opacity-70"
+                />
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="min-h-[56px] shrink-0 mx-auto w-fit max-w-full rounded-full border-2 border-[#30C2DB] bg-[#30C2DB] px-8 font-gabarito text-base font-bold uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-[#28b3ca] hover:border-[#28b3ca] focus:outline-none focus:ring-2 focus:ring-[#30C2DB]/40 disabled:cursor-not-allowed disabled:opacity-70 lg:mx-0"
+                >
+                  {submitting ? "…" : "Submit"}
+                </button>
+              </div>
             </form>
             <p className="order-3 lg:hidden mt-3 font-poppins text-lg sm:text-2xl font-bold uppercase tracking-wide text-[#30C2DB] drop-shadow-sm text-center leading-tight">
               <span className="block tracking-tight">LAUNCHING IN NYC TRI STATE</span>
