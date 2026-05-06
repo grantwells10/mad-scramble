@@ -19,23 +19,42 @@ export default function Footer() {
     formData.append("access_key", process.env.NEXT_PUBLIC_WEB3_KEY!)
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
-      }).then((r) => r.json())
+      })
+      const raw = await response.text()
+      let data: { success?: boolean; message?: string } = {}
+      try {
+        data = raw ? (JSON.parse(raw) as typeof data) : {}
+      } catch {
+        setResult(
+          "Unexpected reply from the form service—privacy or ad extensions sometimes block forms. Try again with them off."
+        )
+        setIsSuccess(false)
+        setShowModal(true)
+        setIsSubmitting(false)
+        return
+      }
 
-      if (res.success) {
+      if (data.success) {
         setResult("Message sent successfully!")
         setIsSuccess(true)
         setShowModal(true)
         form.reset()
       } else {
-        setResult("Failed to send message. Please try again.")
+        setResult(
+          typeof data.message === "string" && data.message.trim()
+            ? data.message
+            : "Failed to send message. Please try again."
+        )
         setIsSuccess(false)
         setShowModal(true)
       }
     } catch {
-      setResult("Network error. Please try again.")
+      setResult(
+        "Could not reach the form service (connection or blocked request—check ad blockers for api.web3forms.com)."
+      )
       setIsSuccess(false)
       setShowModal(true)
     }

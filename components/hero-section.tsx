@@ -13,7 +13,7 @@ export default function HeroSection() {
     setResult("")
     const form = e.currentTarget
     const formData = new FormData(form)
-    const key = process.env.NEXT_PUBLIC_WEB3_KEY
+    const key = process.env.NEXT_PUBLIC_WEB3_WAITLIST_KEY
     if (!key) {
       setResult("Waitlist is not configured yet.")
       setSubmitting(false)
@@ -22,18 +22,33 @@ export default function HeroSection() {
     formData.append("access_key", key)
     formData.append("subject", "Mad Scramble — Waitlist signup")
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
-      }).then((r) => r.json())
-      if (res.success) {
+      })
+      const raw = await response.text()
+      let data: { success?: boolean; message?: string } = {}
+      try {
+        data = raw ? (JSON.parse(raw) as typeof data) : {}
+      } catch {
+        setResult(
+          "Got an unexpected reply from the form service—often an ad/privacy blocker. Try disabling it for this page or submit from another browser."
+        )
+        setSubmitting(false)
+        return
+      }
+      if (data.success) {
         setResult("Thanks — you’re on the list!")
         form.reset()
       } else {
-        setResult("Something went wrong. Try again.")
+        const msg =
+          typeof data.message === "string" && data.message.trim() ? data.message : "Something went wrong. Try again."
+        setResult(msg)
       }
     } catch {
-      setResult("Network error. Try again.")
+      setResult(
+        "Could not reach the form service—check your connection, or temporarily allow blocked requests (ad blockers often block api.web3forms.com)."
+      )
     }
     setSubmitting(false)
   }
