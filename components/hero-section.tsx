@@ -101,41 +101,17 @@ export default function HeroSection() {
 
           <div className="order-1 lg:order-2 flex min-w-0 translate-x-0 justify-center sm:translate-x-1 lg:-translate-x-5 lg:justify-end lg:flex-1 pt-2 sm:pt-4 lg:pt-0">
             <figure
-              className="relative isolate mx-auto w-[min(92vw,280px)] h-[280px] sm:w-[min(88vw,320px)] sm:h-[310px] md:w-[340px] md:h-[330px] lg:w-[400px] lg:h-[350px]"
+              className="relative mx-auto w-[min(92vw,520px)] sm:w-[min(88vw,560px)] lg:w-[min(100%,600px)]"
               aria-label="Mad Scramble cartons: French Toast, Pancake, and Garlic Parm"
             >
-              {/* Back row — French Toast (left) & Garlic Parm (right), tilted outward from center */}
-              <div className="absolute bottom-0 left-[-6%] z-10 w-[50%] max-w-[184px] origin-bottom rotate-[-10deg] drop-shadow-lg translate-y-1 sm:translate-y-2">
-                <Image
-                  src="/french-toast.png"
-                  alt=""
-                  width={400}
-                  height={520}
-                  className="w-full h-auto object-contain object-bottom pointer-events-none select-none"
-                  priority
-                />
-              </div>
-              <div className="absolute bottom-0 right-[-6%] z-10 w-[50%] max-w-[184px] origin-bottom rotate-[10deg] drop-shadow-lg translate-y-1 sm:translate-y-2">
-                <Image
-                  src="/garlic-parm.png"
-                  alt=""
-                  width={400}
-                  height={520}
-                  className="w-full h-auto object-contain object-bottom pointer-events-none select-none"
-                  priority
-                />
-              </div>
-              {/* Front — Pancake on top of both side cartons */}
-              <div className="absolute left-1/2 bottom-0 z-30 w-[53%] max-w-[198px] -translate-x-1/2 origin-bottom -translate-y-1 sm:-translate-y-2 drop-shadow-2xl">
-                <Image
-                  src="/pancake.png"
-                  alt=""
-                  width={400}
-                  height={520}
-                  className="w-full h-auto object-contain object-bottom pointer-events-none select-none"
-                  priority
-                />
-              </div>
+              <Image
+                src="/all_flavors.png"
+                alt=""
+                width={10549}
+                height={6379}
+                className="w-full h-auto object-contain pointer-events-none select-none drop-shadow-2xl"
+                priority
+              />
             </figure>
           </div>
         </div>
